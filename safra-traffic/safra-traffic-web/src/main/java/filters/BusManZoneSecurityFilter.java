@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.IdentityBean;
 
-@WebFilter("/BusMan/*")
+@WebFilter("/admin/BusMan/*")
 public class BusManZoneSecurityFilter implements Filter {
 
 	@Override

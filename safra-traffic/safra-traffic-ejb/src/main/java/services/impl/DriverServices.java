@@ -24,6 +24,8 @@ public class DriverServices implements DriverServicesRemote,
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	private StationServices stationServices;
+
 	/**
 	 * Default constructor.
 	 */
@@ -42,15 +44,18 @@ public class DriverServices implements DriverServicesRemote,
 		List<Bus> buses = new ArrayList<>();
 		List<BusDriv> busDrivers = new ArrayList<>();
 		try {
+
 			Driver driver = findDriverById(idDriver);
-			String jpql = "SELECT bd FROM BusDriv bd WHERE bd.driver = :param1";
+			String jpql = "SELECT bd.id FROM BusDriv bd WHERE bd.driver = :param1";
 			Query query = entityManager.createQuery(jpql);
 			query.setParameter("param1", driver);
 			busDrivers = query.getResultList();
-			String jpql2 = "SELECT b FROM Bus b WHERE b.Bus = :param1";
-			Query query2 = entityManager.createQuery(jpql2);
-			query2.setParameter("param1", busDrivers);
-			buses = query2.getResultList();
+
+			for (BusDriv busDriv : busDrivers) {
+				Bus bus = stationServices.findBusById(busDriv.getBus().getId());
+				buses.add(bus);
+
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,7 +67,8 @@ public class DriverServices implements DriverServicesRemote,
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Driver> findAllBuses() {
-		return entityManager.createQuery("Select b from Bus b").getResultList();
+		return entityManager.createQuery("Select b from Buses b")
+				.getResultList();
 	}
 
 }
