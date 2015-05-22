@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import services.interfaces.StationServicesLocal;
 import services.interfaces.TicketServicesLocal;
+import domain.Passenger;
 import domain.Station;
 import domain.Ticket;
 
@@ -19,9 +22,13 @@ public class TicketBean {
 	private Date date1;
 	private List<Station> stations = new ArrayList<>();
 	private List<Station> stations2 = new ArrayList<>();
-//
-//	@EJB
-//	private BusinessLogicServicesLocal businessLogicServicesLocal;
+	private int Stars = 0;
+	private String erreur500 = "/erreur?faces-redirect=true";
+	private String lista = "/erreur?faces-redirect=true";
+	private String navigateUpdate = "/index?faces-redirect=true";
+	//
+	// @EJB
+	// private BusinessLogicServicesLocal businessLogicServicesLocal;
 
 	@EJB
 	private TicketServicesLocal ticketServicesLocal;
@@ -32,6 +39,23 @@ public class TicketBean {
 	Ticket ticket = new Ticket();
 	Station stationDeparture = new Station();
 	Station stationArrival = new Station();
+
+	@ManagedProperty("#{identity}")
+	private Passenger passenger;
+
+	@PostConstruct
+	public void initModel() {
+		stations = stationServicesLocal.findAllStations();
+		stations2 = stationServicesLocal.findAllStations();
+	}
+
+	public Passenger getPassenger() {
+		return passenger;
+	}
+
+	public void setPassenger(Passenger passenger) {
+		this.passenger = passenger;
+	}
 
 	public String doSearchBus() {
 		System.out.println("Hello");
@@ -46,6 +70,17 @@ public class TicketBean {
 
 		return "";
 
+	}
+
+	public String doReserve() {
+		try {
+			ticket.setStar(Stars);
+			ticket.setPassenger(passenger);
+			ticketServicesLocal.addTicket(ticket);
+			return lista;
+		} catch (Exception e) {
+			return erreur500;
+		}
 	}
 
 	public Station getStationDeparture() {
@@ -73,9 +108,9 @@ public class TicketBean {
 		this.stations = stations;
 	}
 
-//	public Station doFindStationByName(String name) {
-//		return businessLogicServicesLocal.findStationByName(name);
-//	}
+	// public Station doFindStationByName(String name) {
+	// return businessLogicServicesLocal.findStationByName(name);
+	// }
 
 	public Date getDate1() {
 		return date1;
@@ -104,6 +139,14 @@ public class TicketBean {
 
 	public void setStations2(List<Station> stations2) {
 		this.stations2 = stations2;
+	}
+
+	public int getStars() {
+		return Stars;
+	}
+
+	public void setStars(int stars) {
+		Stars = stars;
 	}
 
 }

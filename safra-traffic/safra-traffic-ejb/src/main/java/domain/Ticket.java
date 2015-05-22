@@ -20,7 +20,7 @@ public class Ticket implements Serializable {
 	private Double price;
 	private Date date;
 	private Integer star;
-
+	
 	private static final long serialVersionUID = 1L;
 
 	private Passenger passenger;

@@ -46,16 +46,24 @@ public class DriverServices implements DriverServicesRemote,
 		try {
 
 			Driver driver = findDriverById(idDriver);
-			String jpql = "SELECT bd.id FROM BusDriv bd WHERE bd.driver = :param1";
+			String jpql = "SELECT bd FROM BusDriv bd WHERE bd.driver = :param1";
 			Query query = entityManager.createQuery(jpql);
 			query.setParameter("param1", driver);
 			busDrivers = query.getResultList();
 
-			for (BusDriv busDriv : busDrivers) {
-				Bus bus = stationServices.findBusById(busDriv.getBus().getId());
-				buses.add(bus);
-
-			}
+			// for (BusDriv busDriv : busDrivers) {
+			//
+			// Bus bus = new Bus();
+			// bus =stationServices.findBusById(busDriv.getBus().getId());
+			// System.out.println(bus.getNum());
+			//
+			// if (bus.getId().equals(busDriv.getBus().getId()))
+			// buses.add(bus);
+			//
+			// }
+			// for (Bus b : buses) {
+			// System.out.println(b.getNum());
+			// }
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,8 +75,7 @@ public class DriverServices implements DriverServicesRemote,
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Driver> findAllBuses() {
-		return entityManager.createQuery("Select b from Buses b")
-				.getResultList();
+		return entityManager.createQuery("Select b from Bus b").getResultList();
 	}
 
 }

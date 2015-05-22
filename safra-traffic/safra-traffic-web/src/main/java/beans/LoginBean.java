@@ -45,15 +45,15 @@ public class LoginBean {
 
 	public String doLogin() {
 		String navigateTo = null;
-		Object found = identificationServiceLocal.login(login, pwd);
+		User found = identificationServiceLocal.login(login, pwd);
 		if (found != null) {
 			identityBean.setObject(found);
 			if (found instanceof BusMan) {
 				navigateTo = "/admin/BusMan/home?faces-redirect=true";
 			} else if (found instanceof Passenger) {
-				navigateTo = "/admin/pssenger/home?faces-redirect=true";
+				navigateTo = "/Passenger/BuyTicket?faces-redirect=true";
 			} else if (found instanceof Driver) {
-				navigateTo = "/?faces-redirect=true";
+				navigateTo = "/Driver/home?faces-redirect=true";
 			}
 
 		} else {

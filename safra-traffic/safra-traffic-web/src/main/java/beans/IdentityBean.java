@@ -6,21 +6,22 @@ import javax.faces.bean.SessionScoped;
 import domain.BusMan;
 import domain.Driver;
 import domain.Passenger;
+import domain.User;
 
 @ManagedBean(name = "identity")
 @SessionScoped
 public class IdentityBean {
 
-	private Object object;
+	private User object;
 
 	public IdentityBean() {
 	}
 
-	public Object getObject() {
+	public User getObject() {
 		return object;
 	}
 
-	public void setObject(Object object) {
+	public void setObject(User object) {
 		this.object = object;
 	}
 

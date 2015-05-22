@@ -11,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 
 import domain.Bus;
 import domain.Driver;
-import domain.Station;
 
 @Local
 @Path("/drivers")
@@ -23,7 +22,6 @@ public interface DriverServicesLocal {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	List<Bus> findBusesByDriverId(@PathParam("id") Integer idDriver);
-
 
 	@GET
 	@Produces("application/json")

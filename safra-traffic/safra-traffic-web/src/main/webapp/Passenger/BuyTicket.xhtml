@@ -1,19 +1,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:composite="http://java.sun.com/jsf/composite"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <head>
 <title>Not present in rendered output</title>
 </head>
 <body>
-<composite:interface>
+	<h:form>
+		<p:panelGrid>
+			<p:outputLabel value="Station Departure"></p:outputLabel>
+			<p:selectOneMenu value="#{ticketBean.stations}">
+				<f:selectItems value="#{ticketBean.stationDeparture}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Station Arrival"></p:outputLabel>
+			<p:selectOneMenu value="#{ticketBean.stations2}">
+				<f:selectItems value="#{ticketBean.stationArrival}" />
+			</p:selectOneMenu>
+			<p:outputLabel value="Level"></p:outputLabel>
+			<p:selectOneMenu value="#{ticketBean.stars}">
+				<f:selectItem itemValue="1" itemLabel="One Station" />
+				<f:selectItem itemValue="2" itemLabel="Two Stations" />
+				<f:selectItem itemValue="2" itemLabel="Three Stations" />
+			</p:selectOneMenu>
+		</p:panelGrid>
 
-</composite:interface>
-<composite:implementation>
-
-</composite:implementation>
+		<p:commandButton action="#{ticketBean.doReserve()}"></p:commandButton>
+	</h:form>
 </body>
 </html>
