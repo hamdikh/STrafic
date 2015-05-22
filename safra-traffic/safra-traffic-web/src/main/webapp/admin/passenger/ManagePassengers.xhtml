@@ -2,76 +2,75 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
 <body>
 	<h1>manage passengers</h1>
 	<h:form>
-		<h:dataTable value="#{passengerBean.passengers}" var="p" border="2">
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="name" />
-				</f:facet>
-#{p.name}
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="login" />
-				</f:facet>
-#{p.login}
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="password" />
-				</f:facet>
-#{p.password}
-			</h:column>
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="cash" />
-				</f:facet>
-#{p.cash}
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="gender" />
-				</f:facet>
-#{p.gender}
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="#" />
-				</f:facet>
-				<h:commandButton action="#{passengerBean.doSelect}" value="select">
-					<f:setPropertyActionListener value="#{p}"
-						target="#{passengerBean.passenger}"></f:setPropertyActionListener>
-				</h:commandButton>
-			</h:column>
-		</h:dataTable>
-		<h:commandButton action="#{passengerBean.doSelect()}"
-			value="add passenger" />
+		<h:panelGrid columns="2">
+			<p:dataTable value="#{passengerBean.passengers}" var="p" border="2">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="name" />
+					</f:facet>
+					<h:outputText value="#{p.name}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="login" />
+					</f:facet>
+					<h:outputText value="#{p.login}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="BirthDay" />
+					</f:facet>
+					<h:outputText value="#{p.birthDay}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="cash" />
+					</f:facet>
+					<h:outputText value="#{p.cash}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="gender" />
+					</f:facet>
+					<h:outputText value="#{p.gender}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Edit" />
+					</f:facet>
+					<p:commandButton action="#{passengerBean.doSelect}" value="select"
+						ajax="false">
+						<f:setPropertyActionListener value="#{p}"
+							target="#{passengerBean.passenger}"></f:setPropertyActionListener>
+					</p:commandButton>
+					<p:commandButton action="#{passengerBean.doDeletePass}" value="Delete"
+						ajax="false">
+						<f:setPropertyActionListener value="#{p}"
+							target="#{passengerBean.passenger}"></f:setPropertyActionListener>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:panelGrid>
 		<h:panelGrid columns="2" rendered="#{passengerBean.visibility}">
 			<h:outputText value="name" />
 			<h:inputText value="#{passengerBean.passenger.name}" />
 			<h:outputText value="login" />
 			<h:inputText value="#{passengerBean.passenger.login}" />
-			<h:outputText value="password" />
-			<h:inputText value="#{passengerBean.passenger.password}" />
+			<h:outputText value="Birthday" />
+			<p:calendar value="#{passengerBean.passenger.birthDay}"></p:calendar>
 			<h:outputText value="cash" />
 			<h:inputText value="#{passengerBean.passenger.cash}" />
-			<h:outputText value="birthDay" converter="javax.faces.DateTime" />
-			<h:inputText value="#{passengerBean.passenger.birthDay}" />
 			<h:outputText value="gender" />
 			<h:inputText value="#{passengerBean.passenger.gender}" />
-			<h:commandButton action="#{passengerBean.doSaveOrUpdate}"
-				value="save or update" />
-			<h:commandButton action="#{passengerBean.doDeletePass}"
-				value="delete" />
+			<p:commandButton action="#{passengerBean.doSaveOrUpdate}"
+				value="save or update" ajax="false"></p:commandButton>
 		</h:panelGrid>
-
 	</h:form>
-
-
 </body>
 </html>
