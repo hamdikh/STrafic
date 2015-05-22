@@ -4,9 +4,83 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/template/template.xhtml">
 	<ui:define name="pageTitle">index</ui:define>
-	<ui:define name="pageContent">
+	<ui:define name="pageintro">
+		<div class="intro">
+			<div id="googleMap" style="width: 100%; height: 100%;"></div>
+		</div>
+		<div class="black cta">
+			<div class="wrap">
+				<div class="row" style="padding: 50px 0px 0px 0px">
+					<div class="one-third wow fadeIn">
+						<span class="circle"><span class="ico pig"></span></span>
+						<h3>Fixed rates</h3>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+							sed diam nonummy tinc dolore magna.</p>
+					</div>
 
+					<div class="one-third wow fadeIn" data-wow-delay=".2s">
+						<span class="circle"><span class="ico lock"></span></span>
+						<h3>Reliable transfers</h3>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+							sed diam nonummy tinc dolore magna.</p>
+					</div>
+
+					<div class="one-third wow fadeIn" data-wow-delay=".4s">
+						<span class="circle"><span class="ico wallet"></span></span>
+						<h3>No booking fees</h3>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+							sed diam nonummy tinc dolore magna.</p>
+					</div>
+
+					<div class="one-third wow fadeIn">
+						<span class="circle"><span class="ico heart"></span></span>
+						<h3>Free cancellation</h3>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+							sed diam nonummy tinc dolore magna.</p>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		<div class="black cta">
+			<div class="wrap">
+				<p class="wow fadeInLeft">Like what you see? Are you ready to
+					stand out? You know what to do.</p>
+				<a href="#" class="btn huge color right wow fadeInRight">Purchase
+					theme</a>
+			</div>
+		</div>
+
+		<div class="partners white center">
+			<div class="wrap">
+				<h2 class="wow fadeIn">Our partners</h2>
+				<div class="one-fifth wow fadeIn">
+					<a href="#"><img
+						src="#{request.contextPath}/resources/images/st.png"
+						alt="Transfers" /></a>
+				</div>
+				<div class="one-fifth wow fadeIn" data-wow-delay=".2s">
+					<a href="#"><img
+						src="#{request.contextPath}/resources/images/st.png"
+						alt="Transfers" /></a>
+				</div>
+				<div class="one-fifth wow fadeIn" data-wow-delay=".4s">
+					<a href="#"><img
+						src="#{request.contextPath}/resources/images/st.png"
+						alt="Transfers" /></a>
+				</div>
+				<div class="one-fifth wow fadeIn" data-wow-delay=".6s">
+					<a href="#"><img
+						src="#{request.contextPath}/resources/images/st.png"
+						alt="Transfers" /></a>
+				</div>
+				<div class="one-fifth" data-wow-delay=".8s">
+					<a href="#"><img
+						src="#{request.contextPath}/resources/images/st.png"
+						alt="Transfers" /></a>
+				</div>
+			</div>
+		</div>
 	</ui:define>
-
-
 </ui:composition>

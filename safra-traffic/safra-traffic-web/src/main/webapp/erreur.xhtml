@@ -1,12 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:composite="http://java.sun.com/jsf/composite"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-<head>
-<title>Not present in rendered output</title>
-</head>
-<h1>Erreur Ya Bhim</h1>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle">index</ui:define>
+	<ui:define name="pagecont">
+		<main class="main error" role="main"> <!-- Page info --> <header
+			class="site-title color">
+			<div class="wrap">
+				<div class="container">
+					<h1>Error 404</h1>
+					<nav role="navigation" class="breadcrumbs">
+						<ul>
+							<li><a href="index.html" title="Home">Home</a></li>
+							<li>Error 404</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header> <!-- //Page info -->
+
+		<div class="wrap">
+			<div class="row">
+				<!--- Content -->
+				<div class="content one-half right textongreyRight">
+					<h2>404 PAGE NOT FOUND</h2>
+					<p>The page you’ve requested could not be found or it was
+						already removed from the database.</p>
+					<p>
+						If you believe that this is an error, please kindly   <a
+							href="index.html">homepage</a>. Thank you!
+					</p>
+				</div>
+				<!--- //Content -->
+			</div>
+		</div>
+		</main>
+	</ui:define>
+</ui:composition>

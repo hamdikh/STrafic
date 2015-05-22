@@ -56,7 +56,7 @@ public class LoginBean {
 		if (user != null) {
 			identityBean.setUser(user);
 			if (user instanceof BusMan) {
-				navigateTo = "/admin/BusMan/Lines/AddLine?faces-redirect=true";
+				navigateTo = "/BusMan/Lines/ViewLines?faces-redirect=true";
 			} else if (user instanceof Passenger) {
 				navigateTo = "/Passenger/BuyTicket?faces-redirect=true";
 			} else if (user instanceof Driver) {

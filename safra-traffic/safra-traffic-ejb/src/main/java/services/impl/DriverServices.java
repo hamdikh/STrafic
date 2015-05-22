@@ -51,19 +51,9 @@ public class DriverServices implements DriverServicesRemote,
 			query.setParameter("param1", driver);
 			busDrivers = query.getResultList();
 
-			// for (BusDriv busDriv : busDrivers) {
-			//
-			// Bus bus = new Bus();
-			// bus =stationServices.findBusById(busDriv.getBus().getId());
-			// System.out.println(bus.getNum());
-			//
-			// if (bus.getId().equals(busDriv.getBus().getId()))
-			// buses.add(bus);
-			//
-			// }
-			// for (Bus b : buses) {
-			// System.out.println(b.getNum());
-			// }
+			for (BusDriv busDriv : busDrivers) {
+				buses.add(busDriv.getBus());
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

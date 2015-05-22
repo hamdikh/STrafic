@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle">index</ui:define>
+	<ui:define name="pagecont">
+		<h:form>
+			<p:panel header="Manage stations">
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+					<p:dataTable value="#{stationBean.stations}" var="s" border="2">
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Id" />
+							</f:facet>
+							<h:outputText value="#{s.id}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Name" />
+							</f:facet>
+							<h:outputText value="#{s.name}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="#" />
+							</f:facet>
+							<p:commandButton action="#{stationBean.doSelectStation}"
+								value="select" ajax="false">
+								<f:setPropertyActionListener value="#{s}"
+									target="#{stationBean.station}"></f:setPropertyActionListener>
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</p:panel>
+			<p:panel header="List of stations">
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+					<p:panelGrid columns="2" rendered="#{stationBean.visibility}">
+						<h:outputText value="Name" />
+						<h:inputText value="#{stationBean.station.name}" />
+						<p:commandButton action="#{stationBean.doSaveOrUpdate}"
+							value="save or update" ajax="false" />
+					</p:panelGrid>
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

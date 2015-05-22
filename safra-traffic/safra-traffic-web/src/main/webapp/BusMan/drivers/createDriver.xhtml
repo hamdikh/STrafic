@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle">index</ui:define>
+	<ui:define name="pagecont">
+		<h:form>
+			<p:panel header="Create Driver">
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+					<h:panelGrid columns="2">
+						<h:outputText value="name" />
+						<h:inputText value="#{driverBean.driver.name}" />
+						<h:outputText value="login" />
+						<h:inputText value="#{driverBean.driver.login}" />
+						<h:outputText value="Password" />
+						<h:inputSecret value="#{driverBean.driver.password}" />
+						<h:outputText value="Seniority" />
+						<h:inputText value="#{driverBean.driver.seniority}" />
+						<h:outputText value="Shift" />
+						<h:selectOneMenu value="#{driverBean.driver.shift}">
+							<f:selectItem itemValue="Matin" itemLabel="Matin" />
+							<f:selectItem itemValue="Midi" itemLabel="Midi" />
+							<f:selectItem itemValue="Soir" itemLabel="Soir" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+					<p:commandButton action="#{driverBean.doSaveOrUpdate}"
+						value="save or update" ajax="false"></p:commandButton>
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

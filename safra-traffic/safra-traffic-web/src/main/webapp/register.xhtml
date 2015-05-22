@@ -9,24 +9,28 @@
 
 <h:head></h:head>
 <body>
-	<h1>Register</h1>
 	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="name" />
-			<h:inputText value="#{passengerBean.passenger.name}" />
-			<h:outputText value="login" />
-			<h:inputText value="#{passengerBean.passenger.login}" />
-			<h:outputText value="Password" />
-			<h:inputSecret value="#{passengerBean.passenger.password}" />
-			<h:outputText value="Birthday" />
-			<p:calendar value="#{passengerBean.passenger.birthDay}"></p:calendar>
-			<h:outputText value="cash" />
-			<h:inputText value="#{passengerBean.passenger.cash}" />
-			<h:outputText value="gender" />
-			<h:inputText value="#{passengerBean.passenger.gender}" />
+		<p:panel header="Register">
+			<h:panelGrid id="grid" columns="4" cellpadding="5">
+				<h:panelGrid columns="2" header="Register">
+					<h:outputText value="name" />
+					<p:inputText value="#{passengerBean.passenger.name}" />
+					<h:outputText value="login" />
+					<p:inputText value="#{passengerBean.passenger.login}" />
+					<h:outputText value="Password" />
+					<p:password value="#{passengerBean.passenger.password}" />
+					<h:outputText value="Birthday" />
+					<p:calendar value="#{passengerBean.passenger.birthDay}"></p:calendar>
+					<h:outputText value="cash" />
+					<p:inputText value="#{passengerBean.passenger.cash}" />
+					<h:outputText value="gender" />
+					<p:inputText value="#{passengerBean.passenger.gender}" />
+				</h:panelGrid>
+			</h:panelGrid>
 			<p:commandButton action="#{passengerBean.doSaveOrUpdate}"
 				value="save or update" ajax="false"></p:commandButton>
-		</h:panelGrid>
+
+		</p:panel>
 	</h:form>
 </body>
 </html>

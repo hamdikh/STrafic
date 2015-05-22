@@ -1,19 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:composite="http://java.sun.com/jsf/composite"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-<head>
-<title>Not present in rendered output</title>
-</head>
-<body>
-<composite:interface>
-
-</composite:interface>
-<composite:implementation>
-
-</composite:implementation>
-</body>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle">index</ui:define>
+	<ui:define name="pagecont">
+		<p:panel header="Assigned Buses">
+			<h:panelGrid id="grid" columns="4" cellpadding="5">
+				<p:dataTable value="#{driverbean.buses}" var="b" border="2">
+					<p:column headerText="Num">
+						<h:outputText value="#{b.num}" />
+					</p:column>
+					<p:column headerText="Line Name">
+						<h:outputText value="#{b.line.name}" />
+					</p:column>
+				</p:dataTable>
+			</h:panelGrid>
+		</p:panel>
+	</ui:define>
+</ui:composition>

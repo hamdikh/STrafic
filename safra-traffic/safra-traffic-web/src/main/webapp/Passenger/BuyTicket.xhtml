@@ -1,37 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:composite="http://java.sun.com/jsf/composite"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-<head>
-<title>Not present in rendered output</title>
-</head>
-<body>
-	<h:form>
-		<h:panelGrid>
-			<h:outputText value="Station Departure" />
-			<p:selectOneMenu value="#{ticketBean.stationDeparture}"
-				converter="sl">
-				<f:selectItems value="#{ticketBean.stations}" var="c"
-					itemLabel="#{c.name}" itemValue="#{c}" />
-			</p:selectOneMenu>
-			<h:outputText value="Station Arrival" />
-			<p:selectOneMenu value="#{ticketBean.stationArrival}" converter="sl">
-				<f:selectItems value="#{ticketBean.stations2}" var="s2"
-					itemLabel="#{s2.name}" itemValue="#{s2}" />
-			</p:selectOneMenu>
-			<h:outputText value="Level" />
-			<p:selectOneMenu value="#{ticketBean.stars}">
-				<f:selectItem itemValue="1" itemLabel="One Station" />
-				<f:selectItem itemValue="2" itemLabel="Two Stations" />
-				<f:selectItem itemValue="2" itemLabel="Three Stations" />
-			</p:selectOneMenu>
-		</h:panelGrid>
-
-		<p:commandButton action="#{ticketBean.doReserve()}"></p:commandButton>
-	</h:form>
-</body>
-</html>
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle">index</ui:define>
+	<ui:define name="pagecont">
+		<h:form>
+			<p:panel header="Bye Ticket">
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+					<h:panelGrid>
+						<h:outputText value="Station Departure" />
+						<h:selectOneMenu value="#{ticketBean.stationDeparture}"
+							converter="sl">
+							<f:selectItems value="#{ticketBean.stations}" var="c"
+								itemLabel="#{c.name}" itemValue="#{c}" />
+						</h:selectOneMenu>
+						<h:outputText value="Station Arrival" />
+						<h:selectOneMenu value="#{ticketBean.stationArrival}"
+							converter="sl">
+							<f:selectItems value="#{ticketBean.stations2}" var="s2"
+								itemLabel="#{s2.name}" itemValue="#{s2}" />
+						</h:selectOneMenu>
+						<h:outputText value="Level" />
+						<h:selectOneMenu value="#{ticketBean.stars}">
+							<f:selectItem itemValue="1" itemLabel="One Station" />
+							<f:selectItem itemValue="2" itemLabel="Two Stations" />
+							<f:selectItem itemValue="2" itemLabel="Three Stations" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+				</h:panelGrid>
+				<p:commandButton action="#{ticketBean.doReserve()}" value="Purchase"></p:commandButton>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

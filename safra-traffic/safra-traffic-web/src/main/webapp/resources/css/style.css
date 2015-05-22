@@ -1257,7 +1257,7 @@ h6 {
 	float: left;
 	width: 100%;
 	min-height: 600px;
-	padding: 0 0 105px;
+	padding: 0 0 0px;
 	overflow: hidden;
 	max-width: 100%;
 }

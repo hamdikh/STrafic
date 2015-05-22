@@ -1,19 +1,67 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle">index</ui:define>
+	<ui:define name="pagecont">
 
-		<body>
-			<h:form>
-				<h:panelGrid columns="2">
-					<h:outputText value="login" />
-					<h:inputText value="#{loginBean.login}" />
-					<h:outputText value="password" />
-					<h:inputSecret value="#{loginBean.pwd}" />
-				</h:panelGrid>
-				<h:commandButton action="#{loginBean.doLogin}" value="login" />
-			</h:form>
-		</body>
+		<!-- 		<p:panel header="Login"> -->
+		<!-- 			<h:panelGrid id="grid" columns="4" cellpadding="5"> -->
+		<!-- 				<h:panelGrid columns="2" header="Login"> -->
 
-</html>
+
+
+
+		<!-- 				</h:panelGrid> -->
+		<!-- 			</h:panelGrid> -->
+
+		<!-- 		</p:panel> -->
+
+
+		<div class="wrap">
+			<div class="row">
+
+				<!--- Content -->
+				<div class="content one-half modal">
+					<!--Login-->
+					<div class="box">
+						<h:form>
+							<div class="f-row">
+								<div class="full-width">
+									<h:outputText value="login" />
+									<p:inputText value="#{loginBean.login}" />
+								</div>
+							</div>
+							<div class="f-row">
+								<div class="full-width">
+									<h:outputText value="password" />
+									<p:password value="#{loginBean.pwd}" />
+								</div>
+							</div>
+							<div class="f-row">
+								<div class="full-width check">
+									<input type="checkbox" id="checkbox" /> <label for="checkbox">Remember
+										me next time</label>
+								</div>
+							</div>
+							<div class="f-row">
+								<div class="full-width">
+									<p:commandButton action="#{loginBean.doLogin}" value="login"
+										ajax="false" />
+								</div>
+							</div>
+
+							<p>
+								<a href="#">Forgotten password?</a> <a href="register.jsf">Sign
+									up</a>.
+							</p>
+						</h:form>
+					</div>
+					<!--//Login-->
+				</div>
+				<!--- //Content -->
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

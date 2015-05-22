@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:define name="pageTitle">index</ui:define>
+	<ui:define name="pagecont">
+		<h:form>
+			<p:panel header="Create Line">
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+					<h:panelGrid columns="2">
+						<h:outputText value="Name" />
+						<h:inputText value="#{lineBean.line.name}" />
+					</h:panelGrid>
+				</h:panelGrid>
+			</p:panel>
+
+			<p:panel header="List of Lines">
+				<h:panelGrid id="grid1" columns="4" cellpadding="5">
+					<h:dataTable border="1" value="#{lineBean.dataModel}" var="s">
+						<h:column id="column1">
+							<f:facet name="header">
+								<h:outputText value="Name"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{s.name}" />
+						</h:column>
+						<h:column id="column2">
+							<f:facet name="header">
+								<h:outputText value="#"></h:outputText>
+							</f:facet>
+							<h:commandButton
+								action="#{lineBean.doSelectStationForCurrentLine}"
+								value="select" />
+						</h:column>
+					</h:dataTable>
+
+				</h:panelGrid>
+				<h:commandButton action="#{lineBean.doCreateLine}" value="save" />
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
