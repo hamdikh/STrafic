@@ -12,33 +12,33 @@ import domain.User;
 @SessionScoped
 public class IdentityBean {
 
-	private User object;
+	private User user;
 
 	public IdentityBean() {
-	}
-
-	public User getObject() {
-		return object;
-	}
-
-	public void setObject(User object) {
-		this.object = object;
 	}
 
 	public Boolean hasRole(String role) {
 		Boolean response = false;
 		switch (role) {
 		case "Driver":
-			response = object instanceof Driver;
+			response = user instanceof Driver;
 			break;
 		case "BusMan":
-			response = object instanceof BusMan;
+			response = user instanceof BusMan;
 			break;
 		case "Passenger":
-			response = object instanceof Passenger;
+			response = user instanceof Passenger;
 			break;
 		}
 		return response;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

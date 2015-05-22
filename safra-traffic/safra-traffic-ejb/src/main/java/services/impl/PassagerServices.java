@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import services.interfaces.PassagerServiceLocal;
 import services.interfaces.PassagerServiceRemote;
+import domain.Driver;
 import domain.Passenger;
 
 /**
@@ -30,13 +31,15 @@ public class PassagerServices implements PassagerServiceLocal,
 	}
 
 	@Override
-	public void addPassager(Passenger passager) {
-		entityManager.persist(passager);
-	}
-
-	@Override
-	public void editPassager(int id) {
-		entityManager.merge(findPassagerById(id));
+	public Boolean addPassager(Passenger passenger) {
+		Boolean b = false;
+		try {
+			entityManager.merge(passenger);
+			b = true;
+		} catch (Exception e) {
+			System.out.println("problem ...");
+		}
+		return b;
 	}
 
 	@Override

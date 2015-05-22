@@ -9,9 +9,7 @@ import domain.Passenger;
 @Local
 public interface PassagerServiceLocal {
 
-	void addPassager(Passenger passager);
-
-	void editPassager(int id);
+	Boolean addPassager(Passenger passager);
 
 	Passenger findPassagerById(int id);
 
@@ -20,4 +18,5 @@ public interface PassagerServiceLocal {
 	void deletePassager(int id);
 
 	Passenger getPassengerByName(String value);
+
 }

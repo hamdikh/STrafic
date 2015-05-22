@@ -31,7 +31,7 @@ public class BusManZoneSecurityFilter implements Filter {
 		IdentityBean identity = (IdentityBean) req.getSession().getAttribute(
 				"identity");
 		Boolean letGo = false;
-		if (identity != null && identity.getObject() != null
+		if (identity != null && identity.getUser() != null
 				&& identity.hasRole("BusMan")) {
 			letGo = true;
 		}

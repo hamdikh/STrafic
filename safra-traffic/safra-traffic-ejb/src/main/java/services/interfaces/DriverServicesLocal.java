@@ -27,4 +27,16 @@ public interface DriverServicesLocal {
 	@Produces("application/json")
 	List<Driver> findAllBuses();
 
+	Boolean addDriver(Driver driver);
+
+	void editDriver(int id);
+
+	Driver findDriverById(int id);
+
+	List<Driver> findAllDrivers();
+
+	void deleteDriver(int id);
+
+	Driver getDriverByName(String value);
+
 }

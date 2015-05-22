@@ -3,11 +3,13 @@ package converters;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 
 import services.interfaces.StationServicesLocal;
 import domain.Station;
 
+@FacesConverter("sl")
 public class StationConverter implements Converter {
 
 	@Inject

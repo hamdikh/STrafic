@@ -1,6 +1,5 @@
 package beans;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,15 +19,12 @@ import domain.Ticket;
 @ViewScoped
 public class TicketBean {
 	private Date date1;
-	private List<Station> stations = new ArrayList<>();
-	private List<Station> stations2 = new ArrayList<>();
-	private int Stars = 0;
+	private List<Station> stations;
+	private List<Station> stations2;
+	private String Stars;
 	private String erreur500 = "/erreur?faces-redirect=true";
-	private String lista = "/erreur?faces-redirect=true";
+	private String lista = "/index?faces-redirect=true";
 	private String navigateUpdate = "/index?faces-redirect=true";
-	//
-	// @EJB
-	// private BusinessLogicServicesLocal businessLogicServicesLocal;
 
 	@EJB
 	private TicketServicesLocal ticketServicesLocal;
@@ -40,7 +36,7 @@ public class TicketBean {
 	Station stationDeparture = new Station();
 	Station stationArrival = new Station();
 
-	@ManagedProperty("#{identity}")
+	@ManagedProperty("#{identity.user}")
 	private Passenger passenger;
 
 	@PostConstruct
@@ -49,38 +45,98 @@ public class TicketBean {
 		stations2 = stationServicesLocal.findAllStations();
 	}
 
-	public Passenger getPassenger() {
-		return passenger;
-	}
-
-	public void setPassenger(Passenger passenger) {
-		this.passenger = passenger;
-	}
-
-	public String doSearchBus() {
-		System.out.println("Hello");
-		// List<Bus> buses = businessLogicServicesLocal
-		// .findComingSoonBusesGoingToStation(stationDeparture.getName(),
-		// stationArrival.getName());
-		// System.out.println("size : " + buses.size());
-		Station station1 = stationDeparture;
-		Station station2 = stationArrival;
-		System.out.println("affichage=" + station1);
-		System.out.println("affichage=" + station2);
-
-		return "";
-
-	}
-
 	public String doReserve() {
 		try {
-			ticket.setStar(Stars);
 			ticket.setPassenger(passenger);
+			switch (Stars) {
+			case "1":
+				ticket.setPrice(500.000);
+				ticket.setStar(1);
+				break;
+			case "2":
+				ticket.setPrice(500.000);
+				ticket.setStar(2);
+				break;
+			case "3":
+				ticket.setPrice(500.000);
+				ticket.setStar(3);
+				break;
+			default:
+				break;
+			}
+			ticket.setDate(new Date());
+//			ticket.setBus(stationServicesLocal
+//					.findBusByStations(stationArrival));
 			ticketServicesLocal.addTicket(ticket);
+			System.out.println(ticket.getDate());
 			return lista;
 		} catch (Exception e) {
 			return erreur500;
 		}
+	}
+
+	public Date getDate1() {
+		return date1;
+	}
+
+	public void setDate1(Date date1) {
+		this.date1 = date1;
+	}
+
+	public List<Station> getStations() {
+		return stations;
+	}
+
+	public void setStations(List<Station> stations) {
+		this.stations = stations;
+	}
+
+	public List<Station> getStations2() {
+		return stations2;
+	}
+
+	public void setStations2(List<Station> stations2) {
+		this.stations2 = stations2;
+	}
+
+	public String getStars() {
+		return Stars;
+	}
+
+	public void setStars(String stars) {
+		Stars = stars;
+	}
+
+	public String getErreur500() {
+		return erreur500;
+	}
+
+	public void setErreur500(String erreur500) {
+		this.erreur500 = erreur500;
+	}
+
+	public String getLista() {
+		return lista;
+	}
+
+	public void setLista(String lista) {
+		this.lista = lista;
+	}
+
+	public String getNavigateUpdate() {
+		return navigateUpdate;
+	}
+
+	public void setNavigateUpdate(String navigateUpdate) {
+		this.navigateUpdate = navigateUpdate;
+	}
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
 	}
 
 	public Station getStationDeparture() {
@@ -99,54 +155,12 @@ public class TicketBean {
 		this.stationArrival = stationArrival;
 	}
 
-	public List<Station> getStations() {
-		stations = stationServicesLocal.findAllStations();
-		return stations;
+	public Passenger getPassenger() {
+		return passenger;
 	}
 
-	public void setStations(List<Station> stations) {
-		this.stations = stations;
-	}
-
-	// public Station doFindStationByName(String name) {
-	// return businessLogicServicesLocal.findStationByName(name);
-	// }
-
-	public Date getDate1() {
-		return date1;
-	}
-
-	public void setDate1(Date date1) {
-		this.date1 = date1;
-	}
-
-	public String doSome() {
-		return "";
-	}
-
-	public Ticket getTicket() {
-		return ticket;
-	}
-
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
-	}
-
-	public List<Station> getStations2() {
-		stations2 = stationServicesLocal.findAllStations();
-		return stations2;
-	}
-
-	public void setStations2(List<Station> stations2) {
-		this.stations2 = stations2;
-	}
-
-	public int getStars() {
-		return Stars;
-	}
-
-	public void setStars(int stars) {
-		Stars = stars;
+	public void setPassenger(Passenger passenger) {
+		this.passenger = passenger;
 	}
 
 }

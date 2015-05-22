@@ -9,9 +9,7 @@ import domain.Passenger;
 @Remote
 public interface PassagerServiceRemote {
 
-	void addPassager(Passenger passager);
-
-	void editPassager(int id);
+	Boolean addPassager(Passenger passager);
 
 	Passenger findPassagerById(int id);
 

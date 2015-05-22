@@ -29,6 +29,7 @@ public class LineBean {
 	private String erreur500 = "/admin/BusMan/ViewLines?faces-redirect=true";
 	private String lista = "/erreur?faces-redirect=true";
 	private String navigateUpdate = "/admin/BusMan/updateLine?faces-redirect=true";
+	private Boolean visibility = false;
 
 	public String getLista() {
 		return lista;
@@ -66,11 +67,8 @@ public class LineBean {
 	}
 
 	public String doSelect() {
-		try {
-			return navigateUpdate;
-		} catch (Exception e) {
-			return erreur500;
-		}
+		visibility = true;
+		return "";
 	}
 
 	public String doDelete() {
@@ -155,6 +153,14 @@ public class LineBean {
 
 	public void setLines(List<Line> lines) {
 		this.lines = lines;
+	}
+
+	public Boolean getVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(Boolean visibility) {
+		this.visibility = visibility;
 	}
 
 }

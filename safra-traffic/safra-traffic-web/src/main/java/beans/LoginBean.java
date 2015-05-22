@@ -17,9 +17,8 @@ import domain.User;
 @SessionScoped
 public class LoginBean {
 
-	private User user = new User();
 	@EJB
-	private IdentificationServiceLocal identificationServiceLocal;
+	IdentificationServiceLocal identificationServiceLocal;
 
 	@ManagedProperty("#{identity}")
 	private IdentityBean identityBean;
@@ -43,17 +42,25 @@ public class LoginBean {
 		this.pwd = pwd;
 	}
 
+	public IdentityBean getIdentityBean() {
+		return identityBean;
+	}
+
+	public void setIdentityBean(IdentityBean identityBean) {
+		this.identityBean = identityBean;
+	}
+
 	public String doLogin() {
 		String navigateTo = null;
-		User found = identificationServiceLocal.login(login, pwd);
-		if (found != null) {
-			identityBean.setObject(found);
-			if (found instanceof BusMan) {
-				navigateTo = "/admin/BusMan/home?faces-redirect=true";
-			} else if (found instanceof Passenger) {
+		User user = identificationServiceLocal.login(login, pwd);
+		if (user != null) {
+			identityBean.setUser(user);
+			if (user instanceof BusMan) {
+				navigateTo = "/admin/BusMan/Lines/AddLine?faces-redirect=true";
+			} else if (user instanceof Passenger) {
 				navigateTo = "/Passenger/BuyTicket?faces-redirect=true";
-			} else if (found instanceof Driver) {
-				navigateTo = "/Driver/home?faces-redirect=true";
+			} else if (user instanceof Driver) {
+				navigateTo = "/Driver/ListOfAssignedBuses?faces-redirect=true";
 			}
 
 		} else {
@@ -65,14 +72,6 @@ public class LoginBean {
 					));
 		}
 		return navigateTo;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 }

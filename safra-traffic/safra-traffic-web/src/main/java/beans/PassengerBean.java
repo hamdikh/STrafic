@@ -3,6 +3,7 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -13,15 +14,19 @@ import domain.Passenger;
 @ManagedBean
 @ViewScoped
 public class PassengerBean {
-	private Passenger passenger = new Passenger();
-	private List<Passenger> passengers = new ArrayList<>();
-	private Boolean visibility = false;
 
 	@EJB
 	private PassagerServiceLocal passagerServiceLocal;
 
-	public void doCreatePass(Passenger passenger) {
-		passagerServiceLocal.addPassager(passenger);
+	private Passenger passenger;
+	private List<Passenger> passengers;
+	private Boolean visibility = false;
+
+	@PostConstruct
+	public void initModel() {
+		passenger = new Passenger();
+		passengers = new ArrayList<Passenger>();
+		passengers = passagerServiceLocal.findAllPassangers();
 	}
 
 	public void doSelect() {
@@ -29,8 +34,8 @@ public class PassengerBean {
 	}
 
 	public String doSaveOrUpdate() {
-
-		passagerServiceLocal.editPassager(passenger.getId());
+		passagerServiceLocal.addPassager(passenger);
+		passengers = passagerServiceLocal.findAllPassangers();
 		setVisibility(false);
 		return "";
 	}

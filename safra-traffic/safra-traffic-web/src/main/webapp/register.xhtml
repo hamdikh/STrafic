@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<h1>Register</h1>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="name" />
+			<h:inputText value="#{passengerBean.passenger.name}" />
+			<h:outputText value="login" />
+			<h:inputText value="#{passengerBean.passenger.login}" />
+			<h:outputText value="Password" />
+			<h:inputSecret value="#{passengerBean.passenger.password}" />
+			<h:outputText value="Birthday" />
+			<p:calendar value="#{passengerBean.passenger.birthDay}"></p:calendar>
+			<h:outputText value="cash" />
+			<h:inputText value="#{passengerBean.passenger.cash}" />
+			<h:outputText value="gender" />
+			<h:inputText value="#{passengerBean.passenger.gender}" />
+			<p:commandButton action="#{passengerBean.doSaveOrUpdate}"
+				value="save or update" ajax="false"></p:commandButton>
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

@@ -54,4 +54,6 @@ public interface StationServicesLocal {
 
 	Boolean updateStation(Station station);
 
+	Bus findBusByStations(Station stationArrival);
+
 }

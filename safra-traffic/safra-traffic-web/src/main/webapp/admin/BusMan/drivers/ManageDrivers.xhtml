@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<body>
+	<h1>manage drivers</h1>
+	<h:form>
+		<h:panelGrid columns="2">
+			<p:dataTable value="#{driverBean.drivers}" var="p" border="2">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="name" />
+					</f:facet>
+					<h:outputText value="#{p.name}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="login" />
+					</f:facet>
+					<h:outputText value="#{p.login}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="password" />
+					</f:facet>
+					<h:outputText value="#{p.password}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="shift" />
+					</f:facet>
+					<h:outputText value="#{p.shift}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#" />
+					</f:facet>
+					<h:commandButton action="#{driverBean.doSelect}" value="select">
+						<f:setPropertyActionListener value="#{p}"
+							target="#{driverBean.driver}"></f:setPropertyActionListener>
+					</h:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:panelGrid>
+		<h:panelGrid columns="2" rendered="#{driverBean.visibility}">
+			<h:outputText value="name" />
+			<h:inputText value="#{driverBean.driver.name}" />
+			<h:outputText value="login" />
+			<h:inputText value="#{driverBean.driver.login}" />
+			<h:outputText value="password" />
+			<h:inputText value="#{driverBean.driver.password}" />
+			<h:outputText value="shift" />
+			<h:inputText value="#{driverBean.driver.shift}" />
+			<h:commandButton action="#{driverBean.doSaveOrUpdate}"
+				value="save or update" />
+		</h:panelGrid>
+
+	</h:form>
+
+
+</body>
+</html>
